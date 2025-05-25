@@ -44,3 +44,8 @@ function generateAnimationCSS(animationName) {
 const animationName = 'colorChange'; // Убедитесь, что имя анимации задано здесь
 const cssOutput = generateAnimationCSS(animationName);
 console.log(cssOutput);}
+
+colorPicker.addEventListener('input', () => {
+    animatedBox.style.backgroundColor = colorPicker.value;
+    generateCSS(animationSelect.value, colorPicker.value, speedRange.value + 's');
+  });
