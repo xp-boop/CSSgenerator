@@ -36,6 +36,15 @@ function generateAnimationCSS(animationName) {
 .${animationName} {
     animation: ${animationName} 3s infinite;
 }
+    
+#animatedBox {
+  background-color: ${color};
+  animation-name: ${animationName};
+  animation-duration: ${duration};
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
 `;
     return cssCode;
 }
