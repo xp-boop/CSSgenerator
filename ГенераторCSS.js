@@ -49,8 +49,7 @@ function generateAnimationCSS(animationName) {
     return cssCode;
 }
 
-// Пример использования функции
-const animationName = 'colorChange'; // Убедитесь, что имя анимации задано здесь
+const animationName = 'colorChange';
 const cssOutput = generateAnimationCSS(animationName);
 console.log(cssOutput);}
 
