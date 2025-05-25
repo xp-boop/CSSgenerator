@@ -6,9 +6,6 @@
 <title>Генератор CSS-Анимаций</title>
 </head>
 <body>
-
-<h1>Генератор CSS-Анимаций</h1>
-
 <div class="controls">
   <div class="control-group">
     <label for="animationSelect">Выберите анимацию</label>
@@ -20,22 +17,3 @@
       <option value="scalePulse">Scale Pulse (Пульсация)</option>
     </select>
   </div>
-
-  <div class="control-group">
-    <label for="colorPicker">Цвет блока</label>
-    <input type="color" id="colorPicker" value="#007bff" aria-label="Выбор цвета блока" />
-  </div>
-
-  <div class="control-group" style="flex: 1 1 100%; max-width: 480px;">
-    <label for="speedRange">Скорость анимации (секунды)</label>
-    <input type="range" id="speedRange" min="1" max="10" value="3" aria-label="Скорость анимации" />
-    <div class="speed-value" id="speedValue">3 с</div>
-  </div>
-</div>
-
-<div id="animatedBox" role="img" aria-label="Анимируемый блок"></div>
-
-<div class="css-output" id="cssOutput"></div>
-<button id="copyButton">Скопировать CSS код</button>
-</body>
-</html>
