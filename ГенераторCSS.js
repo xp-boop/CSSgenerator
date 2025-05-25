@@ -73,3 +73,6 @@ copyButton.addEventListener('click', () => {
         console.error('Ошибка при копировании: ', err);
       });
   });
+animatedBox.style.backgroundColor = colorPicker.value;
+  speedValue.textContent = speedRange.value + ' с';
+  updateAnimation();
