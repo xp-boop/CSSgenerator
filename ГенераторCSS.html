@@ -90,12 +90,19 @@ input[type="range"] {
   border: 1px solid #ddd;
 }
 
-/* Состояние при применении анимации */
+
 #animatedBox.animated {
   animation-duration: 3s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-fill-mode: both;
+}
+
+@media (max-width: 600px) {
+  #animatedBox {
+    width: 120px;
+    height: 120px;
+  }
 }
 </style>
 </head>
