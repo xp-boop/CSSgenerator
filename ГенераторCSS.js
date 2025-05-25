@@ -61,3 +61,6 @@ speedRange.addEventListener('input', () => {
     speedValue.textContent = speedRange.value + ' с';
     updateAnimation();
   });
+animationSelect.addEventListener('change', () => {
+    updateAnimation();
+  });
