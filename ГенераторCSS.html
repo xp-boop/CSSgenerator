@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Генератор CSS-Анимаций</title>
+</head>
+<body>
+
+<h1>Генератор CSS-Анимаций</h1>
+
+<div class="controls">
+  <div class="control-group">
+    <label for="animationSelect">Выберите анимацию</label>
+    <select id="animationSelect" aria-label="Выбор анимации">
+      <option value="moveScale">Move & Scale</option>
+      <option value="fade">Fade (Появление)</option>
+      <option value="rotate">Rotate (Вращение)</option>
+      <option value="slideUp">Slide Up (Сдвиг вверх)</option>
+      <option value="scalePulse">Scale Pulse (Пульсация)</option>
+    </select>
+  </div>
+
+  <div class="control-group">
+    <label for="colorPicker">Цвет блока</label>
+    <input type="color" id="colorPicker" value="#007bff" aria-label="Выбор цвета блока" />
+  </div>
+
+  <div class="control-group" style="flex: 1 1 100%; max-width: 480px;">
+    <label for="speedRange">Скорость анимации (секунды)</label>
+    <input type="range" id="speedRange" min="1" max="10" value="3" aria-label="Скорость анимации" />
+    <div class="speed-value" id="speedValue">3 с</div>
+  </div>
+</div>
+
+<div id="animatedBox" role="img" aria-label="Анимируемый блок"></div>
+
+<div class="css-output" id="cssOutput"></div>
+<button id="copyButton">Скопировать CSS код</button>
+
+<script>
+  const animationSelect = document.getElementById('animationSelect');
+  const colorPicker = document.getElementById('colorPicker');
+  const speedRange = document.getElementById('speedRange');
+  const speedValue = document.getElementById('speedValue');
+  const animatedBox = document.getElementById('animatedBox');
+  const cssOutput = document.getElementById('cssOutput');
+  const copyButton = document.getElementById('copyButton');
+
+  function updateAnimation() {
+    const animationName = animationSelect.value;
+    const duration = speedRange.value + 's';
+
+    animatedBox.style.animation = 'none';
+    setTimeout(() => {
+      animatedBox.style.animationName = animationName;
+      animatedBox.style.animationDuration = duration;
+      animatedBox.style.animationIterationCount = '1';
+      animatedBox.style.animationTimingFunction = 'ease-in-out';
+      animatedBox.style.animationFillMode = 'forwards';
+    }, 20);
+
+    // Генерация CSS кода
+    generateCSS(animationName, colorPicker.value, duration);
+  }
+
+  function generateCSS(animationName, color, duration) {
+    const cssCode = `
+#animatedBox {
+  background-color: ${color};
+  animation-name: ${animationName};
+  animation-duration: ${duration};
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+`;
+    cssOutput.textContent = cssCode.trim();
+  }
+
+  colorPicker.addEventListener('input', () => {
+    animatedBox.style.backgroundColor = colorPicker.value;
+    generateCSS(animationSelect.value, colorPicker.value, speedRange.value + 's');
+  });
+
+  speedRange.addEventListener('input', () => {
+    speedValue.textContent = speedRange.value + ' с';
+    updateAnimation();
+  });
+
+  animationSelect.addEventListener('change', () => {
+    updateAnimation();
+  });
+
+  copyButton.addEventListener('click', () => {
+    navigator.clipboard.writeText(cssOutput.textContent)
+      .then(() => {
+        alert('CSS код скопирован в буфер обмена!');
+      })
+      .catch(err => {
+        console.error('Ошибка при копировании: ', err);
+      });
+  });
+
+  // Инициализация
+  animatedBox.style.backgroundColor = colorPicker.value;
+  speedValue.textContent = speedRange.value + ' с';
+  updateAnimation();
+</script>
+
+</body>
+</html>
