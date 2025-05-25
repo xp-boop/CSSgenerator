@@ -64,3 +64,12 @@ speedRange.addEventListener('input', () => {
 animationSelect.addEventListener('change', () => {
     updateAnimation();
   });
+copyButton.addEventListener('click', () => {
+    navigator.clipboard.writeText(cssOutput.textContent)
+      .then(() => {
+        alert('CSS код скопирован в буфер обмена!');
+      })
+      .catch(err => {
+        console.error('Ошибка при копировании: ', err);
+      });
+  });
