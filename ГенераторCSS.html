@@ -78,6 +78,25 @@ input[type="range"] {
   }
 }
 
+.css-output {
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  padding: 15px;
+  font-family: 'Courier New', monospace;
+  white-space: pre-wrap;
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+}
+
+/* Состояние при применении анимации */
+#animatedBox.animated {
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
 </style>
 </head>
 <body>
