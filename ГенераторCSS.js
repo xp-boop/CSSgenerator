@@ -57,3 +57,7 @@ colorPicker.addEventListener('input', () => {
     animatedBox.style.backgroundColor = colorPicker.value;
     generateCSS(animationSelect.value, colorPicker.value, speedRange.value + 's');
   });
+speedRange.addEventListener('input', () => {
+    speedValue.textContent = speedRange.value + ' с';
+    updateAnimation();
+  });
